@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="lib/h2-1.4.199.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
