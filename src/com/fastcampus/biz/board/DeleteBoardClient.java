@@ -11,25 +11,31 @@ import com.fastcampus.biz.common.JDBCUtil;
 public class DeleteBoardClient {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Connection conn = null;
-		PreparedStatement stmt = null;
+		BoardDAO boardDAO = new BoardDAO();
+
+		boardDAO.deleteBoard(1);
 		
-		try {
-			conn = JDBCUtil.getConnection();
-			
-			String sql = "delete board where seq = ?";
-			stmt= conn.prepareStatement(sql);
-			
-			stmt.setInt(1, 3);
-			
-			int count = stmt.executeUpdate();
-			System.out.println(count + "건의 데이터 처리 성공!!!");
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBCUtil.close(stmt, conn);
-		}
+		boardDAO.getBoardList();
+		
+		// TODO Auto-generated method stub
+//		Connection conn = null;
+//		PreparedStatement stmt = null;
+//		
+//		try {
+//			conn = JDBCUtil.getConnection();
+//			
+//			String sql = "delete board where seq = ?";
+//			stmt= conn.prepareStatement(sql);
+//			
+//			stmt.setInt(1, 3);
+//			
+//			int count = stmt.executeUpdate();
+//			System.out.println(count + "건의 데이터 처리 성공!!!");
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			JDBCUtil.close(stmt, conn);
+//		}
 		
 	}
 	
