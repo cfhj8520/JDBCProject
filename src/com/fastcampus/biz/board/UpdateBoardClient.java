@@ -18,7 +18,7 @@ public class UpdateBoardClient {
 
 		boardDAO.updateBoard(vo);
 		
-		boardDAO.getBoardList();
+		boardDAO.getBoardList(vo);
 //		Connection conn = null;
 //		PreparedStatement stmt = null;
 //		

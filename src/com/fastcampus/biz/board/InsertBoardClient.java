@@ -20,7 +20,7 @@ public class InsertBoardClient {
 		
 		boardDAO.insertBoard(vo);
 		
-		boardDAO.getBoardList();
+		boardDAO.getBoardList(vo);
 		// TODO Auto-generated method stub
 //		Connection conn = null;
 //		PreparedStatement stmt = null;

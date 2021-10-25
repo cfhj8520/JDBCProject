@@ -18,7 +18,7 @@ public class DeleteBoardClient {
 		
 		boardDAO.deleteBoard(vo);
 		
-		boardDAO.getBoardList();
+		boardDAO.getBoardList(vo);
 		
 		// TODO Auto-generated method stub
 //		Connection conn = null;
