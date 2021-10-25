@@ -1,11 +1,17 @@
 package com.fastcampus.biz.board;
 
+import java.util.List;
+
 public class GetBoardListClient {
 
 	public static void main(String[] args) {
 		BoardDAO boardDAO = new BoardDAO();
 		
-		boardDAO.getBoardList();
+		BoardVO vo = new BoardVO();
+		
+		List<BoardVO> boardList = boardDAO.getBoardList(vo);
+		
+		System.out.println(boardList.size() + "건의 데이터가 검색됨");
 		
 //		Connection conn = null;
 //		PreparedStatement stmt = null;

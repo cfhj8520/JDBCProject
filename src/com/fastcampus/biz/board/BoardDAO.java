@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fastcampus.biz.common.JDBCUtil;
 
@@ -84,23 +86,27 @@ public class BoardDAO {
 		}
 	}
 	
-	public void getBoardList() {
+	public List<BoardVO> getBoardList(BoardVO vo) {
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt= conn.prepareStatement(BOARD_LIST);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				System.out.println("번호 : " + rs.getInt("SEQ"));
-				System.out.println("제목 : " + rs.getString("TITLE"));
-				System.out.println("작성자 : " + rs.getString("WRITER"));
-				System.out.println("내용 : " + rs.getString("CONTENT"));
-				System.out.println("등록일 : " + rs.getDate("REGDATE"));
-				System.out.println("조회수 : " + rs.getInt("CNT"));
+				BoardVO board = new BoardVO();
+				board.setSeq(rs.getInt("SEQ"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setWriter(rs.getString("WRITER"));
+				board.setContent(rs.getString("CONTENT"));
+				board.setRegDate(rs.getDate("REGDATE"));
+				board.setCnt(rs.getInt("CNT"));
+				boardList.add(board);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			JDBCUtil.close(rs, stmt, conn);
 		}
+		return boardList;
 	}
 }
