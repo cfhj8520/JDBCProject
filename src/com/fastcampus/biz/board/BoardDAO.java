@@ -19,13 +19,13 @@ public class BoardDAO {
 	private final String BOARD_GET = "select * from board where seq = ?";
 	private final String BOARD_LIST = "select * from board order by seq desc";
 	
-	public void insertBoard(String title, String writer, String content) {
+	public void insertBoard(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt= conn.prepareStatement(BOARD_INSERT);
-			stmt.setString(1, title);
-			stmt.setString(2, writer);
-			stmt.setString(3, content);
+			stmt.setString(1, vo.getTitle());
+			stmt.setString(2, vo.getWriter());
+			stmt.setString(3, vo.getContent());
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -33,13 +33,13 @@ public class BoardDAO {
 		}
 	}
 	
-	public void updateBoard(String title, String content, int seq) {
+	public void updateBoard(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt= conn.prepareStatement(BOARD_UPDATE);
-			stmt.setString(1, title);
-			stmt.setString(2, content);
-			stmt.setInt(3, seq);
+			stmt.setString(1, vo.getTitle());
+			stmt.setString(2, vo.getContent());
+			stmt.setInt(3, vo.getSeq());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -47,11 +47,11 @@ public class BoardDAO {
 		}
 	}
 
-	public void deleteBoard(int seq) {
+	public void deleteBoard(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt= conn.prepareStatement(BOARD_DELETE);
-			stmt.setInt(1, seq);
+			stmt.setInt(1, vo.getSeq());
 			int count = stmt.executeUpdate();
 			System.out.println(count + "건의 데이터 처리 성공!!!");
 		}catch(SQLException e) {
@@ -61,11 +61,11 @@ public class BoardDAO {
 		}
 	}
 	
-	public void getBoard(int seq) {
+	public void getBoard(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_GET);
-			stmt.setInt(1, seq);
+			stmt.setInt(1, vo.getSeq());
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				System.out.println("번호 : " + rs.getInt("SEQ"));
@@ -75,7 +75,7 @@ public class BoardDAO {
 				System.out.println("등록일 : " + rs.getDate("REGDATE"));
 				System.out.println("조회수 : " + rs.getInt("CNT"));
 			}else {
-				System.out.println(seq + "번 게시글은 존재하지 않습니다.");
+				System.out.println(vo.getSeq() + "번 게시글은 존재하지 않습니다.");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

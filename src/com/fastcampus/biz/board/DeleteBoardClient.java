@@ -13,7 +13,10 @@ public class DeleteBoardClient {
 	public static void main(String[] args) {
 		BoardDAO boardDAO = new BoardDAO();
 
-		boardDAO.deleteBoard(1);
+		BoardVO vo = new BoardVO();
+		vo.setSeq(1);
+		
+		boardDAO.deleteBoard(vo);
 		
 		boardDAO.getBoardList();
 		

@@ -10,8 +10,13 @@ public class UpdateBoardClient {
 
 	public static void main(String[] args) {
 		BoardDAO boardDAO = new BoardDAO();
+		
+		BoardVO vo = new BoardVO();
+		vo.setSeq(1);
+		vo.setTitle("제목 수정");
+		vo.setContent("내용 수정");
 
-		boardDAO.updateBoard("수정", "테스터", 1);
+		boardDAO.updateBoard(vo);
 		
 		boardDAO.getBoardList();
 //		Connection conn = null;

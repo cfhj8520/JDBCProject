@@ -5,7 +5,10 @@ public class GetBoardClient {
 	public static void main(String[] args) {
 		BoardDAO boardDAO = new BoardDAO();
 		
-		boardDAO.getBoard(1);
+		BoardVO vo = new BoardVO();
+		vo.setSeq(1);
+		
+		boardDAO.getBoard(vo);
 		
 //		Connection conn = null;
 //		PreparedStatement stmt = null;

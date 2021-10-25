@@ -13,7 +13,12 @@ public class InsertBoardClient {
 	public static void main(String[] args) {
 		BoardDAO boardDAO = new BoardDAO();
 		
-		boardDAO.insertBoard("1234", "테스터", "DAO 패턴");
+		BoardVO vo = new BoardVO();
+		vo.setContent("내용");
+		vo.setTitle("제목");
+		vo.setWriter("작성자");
+		
+		boardDAO.insertBoard(vo);
 		
 		boardDAO.getBoardList();
 		// TODO Auto-generated method stub
