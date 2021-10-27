@@ -1,13 +1,5 @@
 package com.fastcampus.biz.board;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.fastcampus.biz.common.JDBCUtil;
-
 public class InsertBoardClient {
 
 	public static void main(String[] args) {
